@@ -1,0 +1,40 @@
+body {
+  font-family: "Helvetica", sans-serif;
+}
+.header {
+  text-align: center;
+  color: #5a2d0c;
+  background-color: #ffebcd;
+  padding: 20px;
+  font-weight: bold;
+}
+.menu-list {
+  background-color: #e6e6fa;
+  padding: 20px;
+}
+.menu-item {
+  display: block;
+  font-size: 18px;
+}
+.coffee-image {
+  margin-right: 20px;
+  margin-top: 15px;
+  width: 100px;
+  position: relative;
+  z-index: 2;
+  float: right;
+}
+.product-img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+.product {
+  display: flex;
+  flex-direction: row;
+}
+.product-desc {
+  margin: auto 5%;
+}

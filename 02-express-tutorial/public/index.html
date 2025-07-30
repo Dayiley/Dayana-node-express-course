@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coffee Shop Menu</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>Furniworld</h1>
+      <p>Discover our selection of furniture.</p>
+    </div>
+
+    <div>
+      <img class="coffee-image" src="cover.png" />
+      <ul class="menu-list">
+        <li class="menu-item">Sofas</li>
+        <li class="menu-item">Tables</li>
+        <li class="menu-item">Chairs</li>
+        <li class="menu-item">Lamps</li>
+      </ul>
+    </div>
+
+    <button id="load-products">Show Products</button>
+
+    <div id="products-container"></div>
+
+    <script>
+      const btn = document.getElementById("load-products");
+      const container = document.getElementById("products-container");
+
+      btn.addEventListener("click", () => {
+        container.innerHTML = "";
+
+        fetch("/api/v1/products")
+          .then((res) => res.json())
+          .then((data) => {
+            data.forEach((product) => {
+              const div = document.createElement("div");
+              div.className = "product";
+              div.innerHTML = `
+              <div>
+                <h2>${product.name}</h2>
+                <img src="${product.image}" alt="${product.name}" class="product-img"/>
+                <p>Price: $${product.price}</p>
+              </div>
+              <div class="product-desc">
+                <p>${product.desc}</p>
+             </div>
+              `;
+              container.appendChild(div);
+            });
+          })
+          .catch((err) => {
+            container.innerHTML = "<p>Could not load products.</p>";
+            console.error("Error:", err);
+          });
+      });
+    </script>
+  </body>
+</html>
