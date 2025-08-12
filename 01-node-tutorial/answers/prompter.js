@@ -22,7 +22,7 @@ const getBody = (req, callback) => {
 
 let selectedColor = "white";
 
-
+//code
 const form = () => {
   return `
   <html>
@@ -49,6 +49,7 @@ const form = () => {
           <option value="teal">Teal</option>
           <option value="lavender">Lavender</option>
           <option value="black">Black</option>
+          <option value="orange">Orange</option>
         </select>
         <button type="submit">Apply</button>
       </form>
@@ -79,6 +80,10 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { "Content-Type": "text/html" });
     res.end(form());
   }
+});
+
+server.on("request", (req) => {
+  console.log("event received: ", req.method, req.url);
 });
 
 server.listen(3000);
